@@ -66,10 +66,13 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/login" className="text-primary font-medium hover:underline">
+            <Link href="/admin" className="text-gray-600 font-medium hover:text-primary transition-transform hover:scale-105">
+              Admin
+            </Link>
+            <Link href="/login" className="text-primary font-medium hover:underline transition-transform hover:scale-105">
               Login
             </Link>
-            <Link href="/register" className="bg-accent text-white px-5 py-2 rounded-md font-medium hover:bg-accent/90 transition-colors duration-200">
+            <Link href="/register" className="bg-accent text-white px-5 py-2 rounded-md font-medium hover:bg-accent/90 transition-transform hover:scale-105 transition-colors duration-200">
               Register
             </Link>
           </div>
@@ -101,6 +104,9 @@ const Header = () => {
                   </Link>
                   <Link href="/contact" onClick={closeMobileMenu} className="px-3 py-2 text-accent font-medium hover:bg-primary hover:text-white rounded-md">
                     Contact Us
+                  </Link>
+                  <Link href="/admin" onClick={closeMobileMenu} className="px-3 py-2 text-gray-600 font-medium hover:bg-primary hover:text-white rounded-md">
+                    Admin Dashboard
                   </Link>
                   <div className="flex space-x-3 mt-4 px-3">
                     <Link href="/login" onClick={closeMobileMenu} className="text-primary font-medium hover:underline">

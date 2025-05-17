@@ -25,6 +25,7 @@ function Router() {
       <Route path="/resources" component={Resources} />
       <Route path="/contact" component={Contact} />
       <Route path="/compliance-calendar" component={ComplianceCalendar} />
+      <Route path="/admin" component={AdminDashboard} />
       <Route component={NotFound} />
     </Switch>
   );
