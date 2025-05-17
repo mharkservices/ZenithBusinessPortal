@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 20%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 8.9% 46.1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 20%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 20%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --primary: 215 65% 33%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 0 0% 100%;
+  --secondary-foreground: 0 0% 20%;
+  --accent: 25 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 215 65% 33%;
+  --radius: 0.5rem;
+
+  --light-bg: 0 0% 96%;
+  --dark: 0 0% 20%;
+  --muted-text: 220 8.9% 46.1%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 215 65% 33%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 25 100% 50%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-roboto text-foreground bg-background;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-semibold;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(rgba(30, 78, 140, 0.9), rgba(30, 78, 140, 0.8)), url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=900');
+  background-size: cover;
+  background-position: center;
+}
+
+.testimonial-gradient {
+  background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.cta-gradient {
+  background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card {
+  background: linear-gradient(to right, rgba(30, 78, 140, 0.05), rgba(30, 78, 140, 0.1));
+}
+
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 40;
+  transition: all 0.3s ease;
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+  
+  .section-heading {
+    @apply font-poppins font-bold text-2xl md:text-3xl lg:text-4xl mt-2 text-foreground;
+  }
+  
+  .section-subheading {
+    @apply text-accent font-medium uppercase tracking-wider text-sm;
+  }
+  
+  .section-description {
+    @apply mt-4 text-muted-foreground max-w-2xl mx-auto;
+  }
+  
+  .text-dark {
+    @apply text-foreground;
+  }
+  
+  .text-muted-text {
+    @apply text-muted-foreground;
+  }
+}
