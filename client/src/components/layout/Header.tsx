@@ -48,6 +48,9 @@ const Header = () => {
             <Link href="/services" className={`font-medium hover:text-primary transition-colors duration-200 ${location === "/services" ? "text-primary" : "text-dark"}`}>
               Services
             </Link>
+            <Link href="/compliance-calendar" className={`font-medium hover:text-primary transition-colors duration-200 ${location === "/compliance-calendar" ? "text-primary" : "text-dark"}`}>
+              Compliance Calendar
+            </Link>
             <Link href="/about" className={`font-medium hover:text-primary transition-colors duration-200 ${location === "/about" ? "text-primary" : "text-dark"}`}>
               About
             </Link>
@@ -83,6 +86,9 @@ const Header = () => {
                 <nav className="flex flex-col space-y-4">
                   <Link href="/services" onClick={closeMobileMenu} className="px-3 py-2 text-dark font-medium hover:bg-primary hover:text-white rounded-md">
                     Services
+                  </Link>
+                  <Link href="/compliance-calendar" onClick={closeMobileMenu} className="px-3 py-2 text-dark font-medium hover:bg-primary hover:text-white rounded-md">
+                    Compliance Calendar
                   </Link>
                   <Link href="/about" onClick={closeMobileMenu} className="px-3 py-2 text-dark font-medium hover:bg-primary hover:text-white rounded-md">
                     About
