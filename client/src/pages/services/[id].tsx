@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle } from "lucide-react";
+import FeedbackForm from '@/components/ui/feedback-form';
 
 // Pricing details for each service
 const pricingOptions = {
@@ -361,12 +362,53 @@ const ServiceDetail = () => {
           </div>
         </div>
         
+        {/* Sub-Services Selection Section */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold mb-6 text-center">Choose Your {service.title} Type</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Select the type of {service.title.toLowerCase()} that best suits your business needs.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.id === "company-registration" && [
+              { id: "private-limited", name: "Private Limited Company", description: "Best for medium to large businesses with multiple shareholders", icon: "ri-building-line" },
+              { id: "llp", name: "Limited Liability Partnership", description: "Ideal for professional services and partnerships", icon: "ri-team-line" },
+              { id: "opc", name: "One Person Company", description: "Perfect for solo entrepreneurs with limited liability protection", icon: "ri-user-line" },
+              { id: "public-limited", name: "Public Limited Company", description: "For large enterprises planning to list on stock exchanges", icon: "ri-stock-line" },
+              { id: "section-8", name: "Section 8 Company", description: "For non-profit organizations with charitable purposes", icon: "ri-heart-line" },
+              { id: "all-types", name: "Compare All Types", description: "Not sure which company type is right for you? Compare all options", icon: "ri-scales-line" }
+            ].map((subService) => (
+              <div 
+                key={subService.id}
+                className="bg-white border rounded-xl hover:shadow-lg hover:border-primary transition-all p-6 cursor-pointer"
+                onClick={() => window.location.href = `/services/company-registration/${subService.id}`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                    <i className={`${subService.icon} text-2xl`}></i>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">{subService.name}</h3>
+                    <p className="text-gray-600">{subService.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            
+            {service.id !== "company-registration" && (
+              <div className="col-span-full">
+                <p className="text-center text-gray-500">Sub-service selection available for company registration only. Please contact us for specific requirements for this service.</p>
+              </div>
+            )}
+          </div>
+        </section>
+        
         {/* Pricing Section */}
         <section className="mb-20">
           <h2 className="text-3xl font-bold mb-12 text-center">Our {service.title} Packages</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {servicePricing.map((plan: any, index: number) => (
-              <Card key={index} className={`relative ${index === 1 ? 'border-primary shadow-lg' : ''}`}>
+              <Card key={index} className={`relative ${index === 1 ? 'border-primary shadow-lg' : ''} transition-transform hover:scale-105 cursor-pointer`}>
                 {index === 1 && (
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
                     Most Popular
@@ -454,6 +496,73 @@ const ServiceDetail = () => {
           </div>
         </section>
         
+        {/* Feedback Section */}
+        <section className="mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="bg-gray-50 p-8 rounded-xl">
+              <h2 className="text-2xl font-bold mb-6">Have Questions?</h2>
+              <p className="text-gray-600 mb-8">
+                Our experts are here to assist you with any questions or concerns regarding our {service.title.toLowerCase()} services. Fill out the form and we'll get back to you promptly.
+              </p>
+              
+              {/* Integrating the feedback form */}
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <FeedbackForm 
+                  serviceName={service.title}
+                  includeRating={true}
+                />
+              </div>
+            </div>
+            
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Why Choose Our {service.title} Service?</h2>
+              <div className="space-y-4">
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex gap-4">
+                    <div className="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
+                      <i className="ri-shield-check-line text-2xl"></i>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">100% Compliance Guaranteed</h3>
+                      <p className="text-gray-600">
+                        Our experts ensure that all your business registrations and filings are 100% compliant with the latest regulations.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex gap-4">
+                    <div className="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
+                      <i className="ri-time-line text-2xl"></i>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">Fast Turnaround Time</h3>
+                      <p className="text-gray-600">
+                        We understand the value of time in business. Our streamlined processes ensure quick delivery of services.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex gap-4">
+                    <div className="bg-primary/10 text-primary p-3 rounded-lg flex-shrink-0">
+                      <i className="ri-customer-service-2-line text-2xl"></i>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">Dedicated Support</h3>
+                      <p className="text-gray-600">
+                        Get personalized assistance from our expert team throughout the entire process and beyond.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="bg-primary text-white rounded-xl p-12 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to get started with our {service.title} service?</h2>

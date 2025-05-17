@@ -60,8 +60,8 @@ const Header = () => {
             <Link href="/#pricing" className="text-dark font-medium hover:text-primary transition-colors duration-200">
               Pricing
             </Link>
-            <Link href="/contact" className={`font-medium hover:text-primary transition-colors duration-200 ${location === "/contact" ? "text-primary" : "text-dark"}`}>
-              Contact
+            <Link href="/contact" className={`font-medium hover:text-primary transition-colors duration-200 ${location === "/contact" ? "text-primary" : "text-accent"}`}>
+              Contact Us
             </Link>
           </nav>
 
@@ -99,8 +99,8 @@ const Header = () => {
                   <Link href="/#pricing" onClick={closeMobileMenu} className="px-3 py-2 text-dark font-medium hover:bg-primary hover:text-white rounded-md">
                     Pricing
                   </Link>
-                  <Link href="/contact" onClick={closeMobileMenu} className="px-3 py-2 text-dark font-medium hover:bg-primary hover:text-white rounded-md">
-                    Contact
+                  <Link href="/contact" onClick={closeMobileMenu} className="px-3 py-2 text-accent font-medium hover:bg-primary hover:text-white rounded-md">
+                    Contact Us
                   </Link>
                   <div className="flex space-x-3 mt-4 px-3">
                     <Link href="/login" onClick={closeMobileMenu} className="text-primary font-medium hover:underline">

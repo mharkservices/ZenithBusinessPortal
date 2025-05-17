@@ -63,8 +63,8 @@ const complianceEvents = {
   ]
 };
 
-// Helper function to check if date has any events
-const hasComplianceEvent = (date: Date) => {
+// Helper function to check if date has any events and return the category
+const getComplianceEventCategory = (date: Date) => {
   for (const category in complianceEvents) {
     const events = complianceEvents[category as keyof typeof complianceEvents];
     for (const event of events) {
@@ -73,11 +73,16 @@ const hasComplianceEvent = (date: Date) => {
         date.getMonth() === event.date.getMonth() &&
         date.getFullYear() === event.date.getFullYear()
       ) {
-        return true;
+        return category;
       }
     }
   }
-  return false;
+  return null;
+};
+
+// Helper function to check if date has any events
+const hasComplianceEvent = (date: Date) => {
+  return getComplianceEventCategory(date) !== null;
 };
 
 // Helper function to get events for a specific date
@@ -205,17 +210,45 @@ const ComplianceCalendar = () => {
                   onSelect={setDate}
                   className="rounded-md border"
                   modifiers={{
-                    hasEvent: (date) => hasComplianceEvent(date),
+                    corporateEvent: (date) => getComplianceEventCategory(date) === 'Corporate',
+                    taxEvent: (date) => getComplianceEventCategory(date) === 'Tax',
+                    gstEvent: (date) => getComplianceEventCategory(date) === 'GST',
                   }}
                   modifiersStyles={{
-                    hasEvent: { 
+                    corporateEvent: { 
                       fontWeight: 'bold',
-                      backgroundColor: '#f0f9ff',
-                      color: '#0369a1',
-                      borderBottom: '2px solid #0ea5e9'
+                      backgroundColor: '#eff6ff',
+                      color: '#2563eb',
+                      borderBottom: '2px solid #3b82f6',
+                      cursor: 'pointer',
+                      transform: 'scale(1.1)',
+                    },
+                    taxEvent: { 
+                      fontWeight: 'bold',
+                      backgroundColor: '#f0fdf4',
+                      color: '#16a34a',
+                      borderBottom: '2px solid #22c55e',
+                      cursor: 'pointer',
+                      transform: 'scale(1.1)',
+                    },
+                    gstEvent: { 
+                      fontWeight: 'bold',
+                      backgroundColor: '#faf5ff',
+                      color: '#9333ea',
+                      borderBottom: '2px solid #a855f7',
+                      cursor: 'pointer',
+                      transform: 'scale(1.1)',
                     }
                   }}
                   month={date}
+                  onDayClick={(day) => {
+                    if (hasComplianceEvent(day)) {
+                      setDate(day);
+                      // Auto-switch to the "selected" tab when clicking a date with events
+                      const tabElement = document.querySelector('[data-value="selected"]') as HTMLElement;
+                      if (tabElement) tabElement.click();
+                    }
+                  }}
                 />
               </CardContent>
             </Card>
