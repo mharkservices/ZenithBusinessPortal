@@ -6,13 +6,13 @@ const pricingPlans = {
   monthly: [
     {
       id: "starter",
-      name: "Starter",
+      name: "Startup",
       description: "Perfect for small businesses and startups",
-      price: "$199",
+      price: "₹7,999",
       period: "/service",
       features: [
         { name: "Company registration basics", included: true },
-        { name: "EIN application", included: true },
+        { name: "GST registration", included: true },
         { name: "Basic tax compliance", included: true },
         { name: "Email support", included: true },
         { name: "Priority processing", included: false },
@@ -24,10 +24,10 @@ const pricingPlans = {
       id: "business",
       name: "Business",
       description: "For growing businesses with multiple needs",
-      price: "$499",
+      price: "₹14,999",
       period: "/service",
       features: [
-        { name: "All Starter features", included: true },
+        { name: "All Startup features", included: true },
         { name: "Comprehensive compliance", included: true },
         { name: "Business license assistance", included: true },
         { name: "Priority processing", included: true },
@@ -40,7 +40,7 @@ const pricingPlans = {
       id: "enterprise",
       name: "Enterprise",
       description: "Complete solution for established businesses",
-      price: "$999",
+      price: "₹24,999",
       period: "/service",
       features: [
         { name: "All Business features", included: true },
@@ -56,13 +56,13 @@ const pricingPlans = {
   annual: [
     {
       id: "starter-annual",
-      name: "Starter",
+      name: "Startup",
       description: "Perfect for small businesses and startups",
-      price: "$159",
+      price: "₹5,999",
       period: "/service/month",
       features: [
         { name: "Company registration basics", included: true },
-        { name: "EIN application", included: true },
+        { name: "GST registration", included: true },
         { name: "Basic tax compliance", included: true },
         { name: "Email support", included: true },
         { name: "Priority processing", included: false },
@@ -74,10 +74,10 @@ const pricingPlans = {
       id: "business-annual",
       name: "Business",
       description: "For growing businesses with multiple needs",
-      price: "$399",
+      price: "₹11,999",
       period: "/service/month",
       features: [
-        { name: "All Starter features", included: true },
+        { name: "All Startup features", included: true },
         { name: "Comprehensive compliance", included: true },
         { name: "Business license assistance", included: true },
         { name: "Priority processing", included: true },
@@ -90,7 +90,7 @@ const pricingPlans = {
       id: "enterprise-annual",
       name: "Enterprise",
       description: "Complete solution for established businesses",
-      price: "$799",
+      price: "₹19,999",
       period: "/service/month",
       features: [
         { name: "All Business features", included: true },
