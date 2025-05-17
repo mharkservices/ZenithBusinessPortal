@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { useLocation } from 'wouter';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Card,
@@ -51,6 +52,28 @@ const mockInquiries = [
 const AdminDashboard = () => {
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('overview');
+  const [, setLocation] = useLocation();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    // Check if user is logged in
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const userRole = localStorage.getItem('userRole');
+    
+    if (!loggedIn || userRole !== 'admin') {
+      toast({
+        title: 'Authentication Required',
+        description: 'Please log in to access the admin dashboard.',
+        variant: 'destructive',
+      });
+      setLocation('/login');
+    } else {
+      setIsAuthenticated(true);
+    }
+    
+    setIsLoading(false);
+  }, [setLocation, toast]);
 
   const handleEdit = (type: string, id: string | number) => {
     toast({
@@ -66,6 +89,31 @@ const AdminDashboard = () => {
       variant: 'destructive',
     });
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userRole');
+    toast({
+      title: 'Logged Out',
+      description: 'You have been logged out successfully.',
+    });
+    setLocation('/login');
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-lg">Loading dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null; // Will be redirected to login in useEffect
+  }
 
   return (
     <>
