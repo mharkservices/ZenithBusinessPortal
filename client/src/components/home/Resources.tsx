@@ -6,25 +6,25 @@ const resources = [
     id: 1,
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80",
     category: "Tax Planning",
-    title: "10 Tax Planning Strategies for Small Businesses",
-    description: "Learn how to minimize your tax burden legally with these effective tax planning strategies for small business owners.",
-    link: "/resources/tax-planning-strategies"
+    title: "GST Filing: A Complete Guide for Businesses",
+    description: "Learn about GST return filing process, due dates, and compliance requirements to ensure your business stays tax compliant.",
+    link: "/resources/gst-filing-guide"
   },
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80",
     category: "Business Formation",
-    title: "LLC vs. Corporation: Choosing the Right Structure",
-    description: "Understand the key differences between LLCs and Corporations to make the best choice for your business goals.",
-    link: "/resources/llc-vs-corporation"
+    title: "Private Limited vs. LLP: Choosing the Right Business Structure",
+    description: "Understand the differences between Private Limited Company and Limited Liability Partnership to make the best choice for your business.",
+    link: "/resources/private-limited-vs-llp"
   },
   {
     id: 3,
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80",
     category: "Legal",
-    title: "5 Essential Legal Documents Every Business Needs",
-    description: "Protect your business with these critical legal documents that provide the foundation for smooth operations and legal protection.",
-    link: "/resources/essential-legal-documents"
+    title: "Startup India Registration: Benefits and Process",
+    description: "Learn how to register under the Startup India initiative and access government benefits, tax exemptions, and funding opportunities.",
+    link: "/resources/startup-india-guide"
   }
 ];
 
