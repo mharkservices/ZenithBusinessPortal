@@ -11,6 +11,7 @@ import ServiceDetail from "@/pages/services/[id]";
 import Resources from "@/pages/resources";
 import Contact from "@/pages/contact";
 import ComplianceCalendar from "@/pages/compliance-calendar";
+import AdminDashboard from "@/pages/admin";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -20,7 +21,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/services" component={Services} />
-      <Route path="/services/:id" component={ServiceDetail} />
+      <Route path="/services/:id/:subType?" component={ServiceDetail} />
       <Route path="/resources" component={Resources} />
       <Route path="/contact" component={Contact} />
       <Route path="/compliance-calendar" component={ComplianceCalendar} />

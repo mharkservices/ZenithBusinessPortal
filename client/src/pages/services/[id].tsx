@@ -256,14 +256,16 @@ const faqs = {
 };
 
 const ServiceDetail = () => {
-  const [, params] = useRoute('/services/:id');
+  const [, params] = useRoute('/services/:id/:subType?');
   const [service, setService] = useState<any>(null);
+  const [subType, setSubType] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     if (params?.id) {
       const foundService = services.find(s => s.id === params.id);
       setService(foundService);
+      setSubType(params.subType || null);
       setLoading(false);
     }
   }, [params]);
@@ -296,6 +298,151 @@ const ServiceDetail = () => {
       </div>
     );
   }
+  
+  // Display specific content based on subType
+  let subTypeContent = null;
+  if (subType) {
+    // Handle specific sub-service types
+    if (service.id === "company-registration" && subType === "opc") {
+      subTypeContent = (
+        <div className="mb-20 bg-gray-50 p-8 rounded-xl">
+          <h2 className="text-3xl font-bold mb-6">One Person Company (OPC)</h2>
+          <p className="text-lg mb-6">
+            A One Person Company (OPC) is a type of corporate structure introduced in the Companies Act, 2013, 
+            designed specifically for solo entrepreneurs who want to enjoy the benefits of a corporate entity with limited liability protection.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Key Benefits of OPC</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Limited liability protection for the sole proprietor</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Perpetual succession regardless of the status of the member</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Enhanced credibility in the market compared to proprietorship</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Easier access to credit and funding opportunities</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Simplified compliance requirements compared to other companies</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Eligibility Criteria</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Only a natural person who is an Indian citizen and resident can form an OPC</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>A person can be a member of only one OPC at any given time</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Mandatory nominee who becomes the member in case of member's death or disability</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 h-5 w-5 mt-1" />
+                  <span>Minimum capital requirement is ₹1 lakh</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow-sm mb-8">
+            <h3 className="text-xl font-semibold mb-4">OPC Registration Process</h3>
+            <ol className="space-y-4">
+              <li className="flex items-start gap-3">
+                <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">1</div>
+                <div>
+                  <p className="font-medium">Apply for Digital Signature Certificate (DSC)</p>
+                  <p className="text-gray-600">The director needs to obtain a DSC for electronically signing documents</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">2</div>
+                <div>
+                  <p className="font-medium">Apply for Director Identification Number (DIN)</p>
+                  <p className="text-gray-600">DIN is required for the sole director of the OPC</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">3</div>
+                <div>
+                  <p className="font-medium">Name Approval</p>
+                  <p className="text-gray-600">Submit RUN (Reserve Unique Name) application for company name approval</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">4</div>
+                <div>
+                  <p className="font-medium">Filing of Incorporation Documents</p>
+                  <p className="text-gray-600">Submit SPICe+ form along with required documents</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">5</div>
+                <div>
+                  <p className="font-medium">Certificate of Incorporation</p>
+                  <p className="text-gray-600">Receive Certificate of Incorporation with PAN and TAN</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+          
+          <div className="flex justify-center">
+            <Button size="lg" className="animate-pulse">
+              Register Your OPC Now
+            </Button>
+          </div>
+        </div>
+      );
+    } else if (service.id === "company-registration" && subType === "private-limited") {
+      // Content for Private Limited Company
+      subTypeContent = (
+        <div className="mb-20 bg-gray-50 p-8 rounded-xl">
+          <h2 className="text-3xl font-bold mb-6">Private Limited Company</h2>
+          <p className="text-lg mb-6">
+            A Private Limited Company is the most popular corporate structure in India, offering limited liability 
+            protection while allowing multiple shareholders and directors to run the business.
+          </p>
+          
+          {/* More Private Limited specific content would go here */}
+          <div className="text-center my-8">
+            <p className="text-primary font-medium">Detailed information for Private Limited Companies coming soon.</p>
+          </div>
+        </div>
+      );
+    } else if (service.id === "company-registration" && subType === "llp") {
+      // Content for LLP
+      subTypeContent = (
+        <div className="mb-20 bg-gray-50 p-8 rounded-xl">
+          <h2 className="text-3xl font-bold mb-6">Limited Liability Partnership (LLP)</h2>
+          <p className="text-lg mb-6">
+            A Limited Liability Partnership combines the flexibility of a partnership with the limited liability protection of a company.
+          </p>
+          
+          {/* More LLP specific content would go here */}
+          <div className="text-center my-8">
+            <p className="text-primary font-medium">Detailed information for LLP coming soon.</p>
+          </div>
+        </div>
+      );
+    }
+  }
 
   const servicePricing = pricingOptions[service.id as keyof typeof pricingOptions] || [];
   const serviceDocuments = requiredDocuments[service.id as keyof typeof requiredDocuments] || [];
@@ -305,14 +452,16 @@ const ServiceDetail = () => {
   return (
     <>
       <Helmet>
-        <title>{service.title} | Zenithfilings</title>
+        <title>{subType ? `${subType.charAt(0).toUpperCase() + subType.slice(1).replace(/-/g, ' ')} - ${service.title}` : service.title} | Zenithfilings</title>
         <meta name="description" content={`Professional ${service.title} services by Zenithfilings. ${service.description}`} />
       </Helmet>
       
       <div className="container mx-auto px-4 py-12 md:py-20">
         {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mb-8">
-          <Link href="/">Home</Link> / <Link href="/services">Services</Link> / <span className="text-primary">{service.title}</span>
+          <Link href="/">Home</Link> / <Link href="/services">Services</Link> / 
+          <Link href={`/services/${service.id}`}> <span className="text-primary">{service.title}</span></Link>
+          {subType && <> / <span className="text-accent">{subType.charAt(0).toUpperCase() + subType.slice(1).replace(/-/g, ' ')}</span></>}
         </div>
         
         {/* Hero Section */}
@@ -362,46 +511,58 @@ const ServiceDetail = () => {
           </div>
         </div>
         
-        {/* Sub-Services Selection Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-6 text-center">Choose Your {service.title} Type</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-            Select the type of {service.title.toLowerCase()} that best suits your business needs.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {service.id === "company-registration" && [
-              { id: "private-limited", name: "Private Limited Company", description: "Best for medium to large businesses with multiple shareholders", icon: "ri-building-line" },
-              { id: "llp", name: "Limited Liability Partnership", description: "Ideal for professional services and partnerships", icon: "ri-team-line" },
-              { id: "opc", name: "One Person Company", description: "Perfect for solo entrepreneurs with limited liability protection", icon: "ri-user-line" },
-              { id: "public-limited", name: "Public Limited Company", description: "For large enterprises planning to list on stock exchanges", icon: "ri-stock-line" },
-              { id: "section-8", name: "Section 8 Company", description: "For non-profit organizations with charitable purposes", icon: "ri-heart-line" },
-              { id: "all-types", name: "Compare All Types", description: "Not sure which company type is right for you? Compare all options", icon: "ri-scales-line" }
-            ].map((subService) => (
-              <div 
-                key={subService.id}
-                className="bg-white border rounded-xl hover:shadow-lg hover:border-primary transition-all p-6 cursor-pointer"
-                onClick={() => window.location.href = `/services/company-registration/${subService.id}`}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
-                    <i className={`${subService.icon} text-2xl`}></i>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">{subService.name}</h3>
-                    <p className="text-gray-600">{subService.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* Display specific subType content if available */}
+        {subTypeContent}
+        
+        {/* Sub-Services Selection Section - only show if no subType is selected */}
+        {!subType && service.id === "company-registration" && (
+          <section className="mb-20">
+            <h2 className="text-3xl font-bold mb-6 text-center">Choose Your {service.title} Type</h2>
+            <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+              Select the type of {service.title.toLowerCase()} that best suits your business needs.
+            </p>
             
-            {service.id !== "company-registration" && (
-              <div className="col-span-full">
-                <p className="text-center text-gray-500">Sub-service selection available for company registration only. Please contact us for specific requirements for this service.</p>
-              </div>
-            )}
-          </div>
-        </section>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { id: "private-limited", name: "Private Limited Company", description: "Best for medium to large businesses with multiple shareholders", icon: "ri-building-line" },
+                { id: "llp", name: "Limited Liability Partnership", description: "Ideal for professional services and partnerships", icon: "ri-team-line" },
+                { id: "opc", name: "One Person Company", description: "Perfect for solo entrepreneurs with limited liability protection", icon: "ri-user-line" },
+                { id: "public-limited", name: "Public Limited Company", description: "For large enterprises planning to list on stock exchanges", icon: "ri-stock-line" },
+                { id: "section-8", name: "Section 8 Company", description: "For non-profit organizations with charitable purposes", icon: "ri-heart-line" },
+                { id: "all-types", name: "Compare All Types", description: "Not sure which company type is right for you? Compare all options", icon: "ri-scales-line" }
+              ].map((subService) => (
+                <Link 
+                  key={subService.id}
+                  href={`/services/company-registration/${subService.id}`}
+                  className="bg-white border rounded-xl hover:shadow-lg hover:border-primary transition-all p-6 cursor-pointer transform hover:scale-105 duration-300"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                      <i className={`${subService.icon} text-2xl`}></i>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-1">{subService.name}</h3>
+                      <p className="text-gray-600">{subService.description}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+        
+        {/* Sub-Services Info for other services */}
+        {!subType && service.id !== "company-registration" && (
+          <section className="mb-20">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-6">Available {service.title} Options</h2>
+              <p className="text-gray-600 mb-12 max-w-3xl mx-auto">
+                Please contact our experts to learn about the specific options and packages available for {service.title.toLowerCase()}.
+              </p>
+              <Button size="lg">Contact Our Experts</Button>
+            </div>
+          </section>
+        )}
         
         {/* Pricing Section */}
         <section className="mb-20">
