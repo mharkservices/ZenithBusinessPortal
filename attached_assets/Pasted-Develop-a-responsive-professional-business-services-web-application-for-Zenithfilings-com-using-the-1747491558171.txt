@@ -1,0 +1,312 @@
+Develop a responsive, professional business services web application for Zenithfilings.com using the MEAN stack (MongoDB, Express.js, Angular, Node.js), with Angular as the primary frontend framework. The application should be modeled after Indiafilings.com, serving as a comprehensive business services portal focused on company registration, tax filing, legal compliance, and business support services with a clean, trustworthy, and professional design that works well on all devices.
+Technology Stack Requirements
+
+Frontend:
+
+Angular 17+ (latest stable version)
+TypeScript
+Angular Material or PrimeNG for UI components
+NgRx for state management
+RxJS for reactive programming
+SCSS for styling
+
+
+Backend:
+
+Node.js with Express.js framework
+MongoDB for database
+Mongoose for object modeling
+JWT for authentication
+
+
+DevOps & Tools:
+
+Git for version control
+npm for package management
+Angular CLI
+Jasmine and Karma for testing
+Docker containers (optional)
+
+
+
+Design Requirements
+
+Color scheme:
+
+Primary: #1e4e8c (deep blue - conveys trust and professionalism)
+Secondary: #ffffff (white - for clean backgrounds)
+Accent: #ff7f00 (orange - for calls to action and highlights)
+Supporting: #f5f5f5 (light gray - for section backgrounds)
+
+
+Typography:
+
+'Poppins' or 'Open Sans' for headings - clean and professional
+'Roboto' for body text - highly readable
+
+
+Overall aesthetic: Professional, corporate, trustworthy with modern elements
+Design inspiration: Indiafilings.com for structure and layout, with improvements in responsiveness and modern design elements
+
+Application Architecture
+
+Implement feature modules for different sections of the application
+Lazy-loaded modules for better performance
+Shared components library
+Core services for authentication, API connectivity, and utilities
+Interceptors for handling HTTP requests/responses and error handling
+Guards for route protection
+Resolvers for pre-loading data
+
+Application Structure
+The application should include the following features/pages:
+
+Homepage Component
+
+Hero carousel component highlighting key services with "Start Now" CTA
+Services grid component with icon cards of primary business services
+"Why Choose Zenithfilings" component with key benefits and statistics
+Customer testimonials carousel component with industry logos
+Pricing comparison overview component
+Recent blog posts/resource articles component
+FAQ accordion component
+Contact CTA component with phone number and email
+
+
+About Module
+
+Company mission and vision component
+Team leadership profiles component
+Company history and milestones timeline component
+Office locations with map integration component
+Certifications and partnerships slider component
+Customer success metrics component
+
+
+Services Module (with sub-modules)
+
+Each major service category needs its own feature module:
+
+Company Registration
+Tax Filing & Compliance
+Trademark & IP Registration
+Legal Documentation
+Accounting Services
+Business Licenses
+
+
+Each service module should include components for:
+
+Service description
+Benefits/features
+Process workflow stepper component
+Pricing plans component with toggle
+FAQs specific to the service
+Related services recommendation component
+
+
+
+
+Resources Module
+
+Blog component with categorized business articles
+Downloadable templates component
+Business guides component
+Video tutorials component with integration to video hosting
+Compliance calendar interactive component
+
+
+User Account Module
+
+User registration and login components
+Profile management component
+Document management component
+Service order history component
+Service tracking component
+Notification center component
+
+
+Admin Dashboard Module
+
+Admin authentication with role-based access control
+User management component
+Content management component
+Service management component
+Order management component
+Analytics and reporting component
+
+
+Contact Module
+
+Contact form component with fields for name, email, phone, subject, service interest, and message
+Office locations component with addresses
+Support information component
+Live chat widget integration component
+Map integration component
+Support hours component
+
+
+
+Backend API Requirements
+
+RESTful API architecture
+API endpoints organized by feature domains
+User authentication and authorization middleware
+CRUD operations for all key entities
+File upload capabilities for document handling
+Email notification service
+Payment gateway integration endpoints
+Rate limiting and security features
+API documentation with Swagger
+
+Database Schema Design
+
+Users collection (authentication, profiles, roles)
+Services collection (categories, details, pricing)
+Orders collection (service purchases, status)
+Blog/Articles collection (content management)
+Testimonials collection
+FAQs collection
+Enquiries collection (from contact forms)
+Documents collection (for user uploaded documents)
+
+Technical Implementation Requirements
+
+Responsive design using Angular Flex Layout or CSS Grid
+Lazy loading of feature modules for performance
+Angular animations for interactive elements
+Reactive Forms with comprehensive validation
+Error handling strategy with user-friendly notifications
+Global state management with NgRx
+Client-side caching strategy
+Progressive Web App (PWA) implementation
+Internationalization (i18n) support for future language expansion
+
+Navigation & UX Requirements
+
+Sticky header with responsive navigation
+Mega-menu component for services dropdown
+Mobile sidenav menu for smaller screens
+Breadcrumb navigation component for inner pages
+Secondary footer navigation with sitemap
+"Back to top" button directive on longer pages
+Route transition animations
+Loading indicators for async operations
+
+Interactive Elements
+
+Material/PrimeNG components for:
+
+Form controls with validation
+Data tables with sorting/filtering
+Modals/dialogs
+Date pickers
+Auto-complete fields
+Stepper components for multi-step processes
+
+
+Custom components for:
+
+Service comparison tables with highlight effect
+Pricing toggle (monthly/yearly) with animations
+Multi-step service application flows
+Document upload with preview
+
+
+
+Accessibility Requirements
+
+ARIA attributes throughout the application
+Keyboard navigation support
+Screen reader compatibility
+Sufficient color contrast ratios (minimum 4.5:1)
+Focus indicators for interactive elements
+Skip to content functionality
+Compliance with WCAG 2.1 AA standards
+
+SEO Implementation
+
+Server-side rendering (SSR) with Angular Universal
+Prerendering for static content pages
+Meta tags service for dynamic meta information
+Canonical URL handling
+Structured data (JSON-LD) implementation for:
+
+Business information
+Services
+FAQs
+Reviews
+
+
+Sitemap generation
+Optimized routing with meaningful URLs
+robots.txt configuration
+Performance optimization for Core Web Vitals
+
+Performance Optimization
+
+Lazy loading of modules and components
+Image optimization strategy
+Code splitting
+Tree shaking
+AOT compilation for production
+Minification and compression
+Bundle size analysis and optimization
+Caching strategy for static assets
+Virtual scrolling for long lists
+
+Security Implementation
+
+JWT authentication with secure storage
+CSRF protection
+XSS prevention strategies
+Content Security Policy
+Input validation on both client and server
+HTTPS enforcement
+Rate limiting for API endpoints
+Secure HTTP headers
+
+Testing Requirements
+
+Unit tests for components and services using Jasmine/Karma
+Integration tests for feature modules
+End-to-end tests using Protractor or Cypress
+API testing strategy
+Performance testing
+Accessibility testing
+
+Project Deliverables
+
+Complete Angular application source code
+Node.js/Express backend API source code
+MongoDB schema definitions and initial data
+Documentation:
+
+Technical architecture document
+API documentation
+User manual
+Admin manual
+Deployment guide
+
+
+Docker configuration files (if applicable)
+Automated test suites
+SEO implementation report
+
+Development Process
+
+Git workflow with feature branches
+CI/CD pipeline configuration
+Code quality tools configuration (ESLint, Prettier)
+Pull request and code review process
+Sprint planning documentation
+Regular progress reporting
+
+Additional Notes
+
+The application should clearly communicate trust and authority in business services
+Visual elements should emphasize ease of process and professional support
+Include space for trust signals like client logos, testimonials, and certifications
+Design should include payment gateway integration
+Client portal for document management and service tracking
+Consider implementing chatbot integration for customer support
