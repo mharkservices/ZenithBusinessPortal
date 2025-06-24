@@ -1,0 +1,73 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  password     String
+  firstName    String
+  lastName     String?
+  phoneNumber  String?
+  companyName  String?
+  role         String   @default("user")
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Service categories
+model Service {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  subServices SubService[]
+  filings     Filing[]
+}
+
+// Sub-services under main services
+model SubService {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  serviceId   Int
+  service     Service  @relation(fields: [serviceId], references: [id])
+  filings     Filing[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([name, serviceId])
+}
+
+// Main filing model
+model Filing {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  filePath    String?
+  serviceId   Int
+  service     Service  @relation(fields: [serviceId], references: [id])
+  subServiceId Int?
+  subService  SubService? @relation(fields: [subServiceId], references: [id])
+  documents   Document[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Required documents for filings
+model Document {
+  id        Int      @id @default(autoincrement())
+  name      String
+  filingId  Int
+  filing    Filing   @relation(fields: [filingId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 
